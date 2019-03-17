@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "p-event": "https://github.com/nicklin99/p-event.git",
     "vue": "^2.6.6"
   },
   "devDependencies": {

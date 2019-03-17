@@ -1,17 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" @click="onClick" ref="logo">
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+/* eslint-disable */
+import pEvent from 'p-event'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    
+  },
+  methods:{
+    onClick(){
+      // eslint-disable-next-line
+      console.log('onClick')
+    }
+  },
+  mounted(){
+    // 浏览器
+    pEvent(document, 'DOMContentLoaded').then(()=>{
+      // eslint-disable-next-line
+      console.log('DOMContentLoaded1')
+    })
+
+    const logoEle = this.$refs.logo
+
+    pEvent(logoEle, 'click').then(()=>{
+      console.log('logo emit a click event')
+    })
+
+    pEvent(this, 'test').then(value=>{
+      console.log('app.vue emit a test event, value:', value)
+    })
+
+    setTimeout(() => {
+      this.$emit('test', 'test event value')
+    }, 3000);
   }
 }
 </script>
