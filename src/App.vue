@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <span>点击图片，和3延迟查看控制台输出</span>
     <img alt="Vue logo" src="./assets/logo.png" @click="onClick" ref="logo">
   </div>
 </template>
